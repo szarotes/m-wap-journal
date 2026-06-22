@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>米兰体育 · 日常中的运动陪伴</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f1f3f5;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #212529;
+      line-height: 1.6;
+      padding: 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      max-width: 760px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    /* 主卡片 – 柔和视觉区 */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.02);
+      padding: 2rem 1.6rem;
+      margin-bottom: 1.6rem;
+      border: 1px solid rgba(200, 200, 210, 0.25);
+      transition: box-shadow 0.2s ease;
+    }
+    .hero-card:hover {
+      box-shadow: 0 8px 26px rgba(0,0,0,0.04), 0 3px 8px rgba(0,0,0,0.02);
+    }
+    .hero-card h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+      color: #1e293b;
+    }
+    .hero-card .tagline {
+      color: #4a5568;
+      font-size: 1rem;
+      font-weight: 380;
+      border-left: 3px solid #a0b4c4;
+      padding-left: 0.9rem;
+      margin: 0.6rem 0 1rem 0;
+    }
+    .hero-card p {
+      color: #374151;
+      margin: 1rem 0 0.2rem 0;
+    }
+    .hero-card .meta-note {
+      font-size: 0.85rem;
+      color: #6c7a8a;
+      margin-top: 1.4rem;
+      border-top: 1px solid #e7eaef;
+      padding-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+    }
+    .meta-note span {
+      background: #eef1f5;
+      border-radius: 30px;
+      padding: 0.2rem 0.9rem;
+      font-size: 0.75rem;
+      color: #3b4a5a;
+    }
+    /* 卡片网格 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      margin-bottom: 1.4rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.01);
+      border: 1px solid rgba(210, 215, 225, 0.4);
+      transition: all 0.15s ease;
+    }
+    .card:hover {
+      border-color: #cdd5df;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .card h2 .emoji-badge {
+      font-size: 1.2rem;
+      background: #f0f4fa;
+      width: 2rem;
+      height: 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 40%;
+      margin-right: 0.2rem;
+    }
+    .card p {
+      color: #3d4a5c;
+      margin-bottom: 0.4rem;
+    }
+    .card ul {
+      list-style: none;
+      margin: 0.5rem 0 0.2rem 0;
+      padding-left: 0;
+    }
+    .card li {
+      padding: 0.2rem 0;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+    .card li::before {
+      content: "—";
+      color: #9aa9b9;
+      margin-right: 0.3rem;
+    }
+    .inline-link {
+      color: #1e4a6b;
+      text-decoration: none;
+      font-weight: 450;
+      border-bottom: 1px solid #b0c6da;
+      transition: border-color 0.1s;
+    }
+    .inline-link:hover {
+      border-bottom-color: #1e4a6b;
+    }
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.2rem 1.6rem;
+      margin: 1.4rem 0;
+      border: 1px solid #dee4ed;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.015);
+    }
+    .faq-mini details {
+      margin: 0.6rem 0;
+      border-bottom: 1px solid #eaedf2;
+      padding-bottom: 0.5rem;
+    }
+    .faq-mini details:last-of-type {
+      border-bottom: none;
+    }
+    .faq-mini summary {
+      font-weight: 450;
+      cursor: pointer;
+      color: #1e2a3a;
+      padding: 0.1rem 0;
+    }
+    .faq-mini p {
+      margin: 0.4rem 0 0.2rem 1rem;
+      font-size: 0.9rem;
+      color: #3b4b5b;
+    }
+    .footer-note {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #6f7d8b;
+      border-top: 1px solid #dce2ea;
+      padding-top: 1.2rem;
+      letter-spacing: 0.01em;
+    }
+    .footer-note a {
+      color: #2a4d6e;
+      text-decoration: none;
+      border-bottom: 1px dotted #b0c2d4;
+    }
+    @media (max-width: 480px) {
+      body {
+        padding: 0.8rem;
+      }
+      .hero-card {
+        padding: 1.4rem 1rem;
+      }
+      .hero-card h1 {
+        font-size: 1.8rem;
+      }
+      .card {
+        padding: 1.2rem;
+      }
+      .faq-mini {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- hero 主视觉 + 再访角度 -->
+    <div class="hero-card">
+      <h1>米兰体育</h1>
+      <div class="tagline">🏟️ 熟悉的节奏 · 持续更新的陪伴</div>
+      <p>有时只是路过，有时专程回来看看。不知不觉中，<a href="https://m-wap-milan.com" class="inline-link">米兰体育</a> 成了手机里常驻的一个标签页。不用刻意记住，下次再来时，内容还是熟悉的样子，却总有新东西冒出来。</p>
+      <p>它不太吵，也不太冷——恰好是能让你放下手机之前，再停留两分钟的地方。</p>
+      <div class="meta-note">
+        <span>📌 从收藏到习惯</span>
+        <span>⚡ 轻量 · 低负担</span>
+        <span>🔄 常回常新</span>
+      </div>
+    </div>
+
+    <!-- 用途卡片 两枚 差异化 -->
+    <div class="card-grid">
+      <div class="card">
+        <h2><span class="emoji-badge">📋</span> 每日用途 · 自然场景</h2>
+        <p>一杯咖啡的工夫，或者排队间隙，就能扫一眼最近的动态。页面简洁，没有多余弹窗，信息直接摊开在眼前。适合那些不想被算法推着走、只想安静浏览的你。</p>
+        <ul>
+          <li>快速回顾昨天错过的片段</li>
+          <li>瞄一眼近期趋势，不用深度阅读</li>
+          <li>关闭后不惦记，下次来还是连贯的</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2><span class="emoji-badge">👥</span> 适合哪些人</h2>
+        <p>不是每个人都热衷追热点，也不是每个人都愿意花半小时刷信息流。如果你——</p>
+        <ul>
+          <li>习惯固定访问几个站点，不喜欢频繁换地方</li>
+          <li>对简洁无广告的界面有好感</li>
+          <li>偶尔想了解动态，但不想被推送淹没</li>
+        </ul>
+        <p style="margin-top: 0.6rem;">那么 <a href="https://m-wap-milan.com" class="inline-link">米兰体育</a> 可能正好在你的频道里。</p>
+      </div>
+    </div>
+
+    <!-- 自然链接段落 嵌入第二次访问角度 -->
+    <div class="faq-mini" style="background: #fafcfe;">
+      <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">🔁 如果只是偶尔回来……</p>
+      <p>很多人第一次访问后，隔了几天又想起，再输入网址回来。页面没有强制登录或关注，直接看内容就好。把 <a href="https://m-wap-milan.com" class="inline-link">米兰体育</a> 加入书签或者主屏幕，下次滑一下就回来了——不占空间，也不需要注册。</p>
+      <p style="margin-top: 0.6rem;">保持关注的方式很简单：想起的时候来一趟。不用每天打卡，但每次来都看到变化。</p>
+    </div>
+
+    <!-- FAQ 摘要 柔和风格 不夸张 -->
+    <div class="faq-mini">
+      <h3 style="font-weight: 450; margin-bottom: 0.4rem; font-size: 1rem; color: #1e293b;">❓ 简短说明 · 常见想法</h3>
+      <details>
+        <summary>页面内容更新频繁吗？</summary>
+        <p>保持稳定的更新节奏，不会突然消失或大改版。每次回来都有新内容，但不会让你觉得陌生。</p>
+      </details>
+      <details>
+        <summary>需要下载额外应用吗？</summary>
+        <p>不需要。网站即开即用，移动端适配友好，没有额外安装步骤。通过浏览器就能持续访问。</p>
+      </details>
+      <details>
+        <summary>如何保持收藏不丢失？</summary>
+        <p>大多数浏览器支持添加到主屏幕或书签栏。将 <a href="https://m-wap-milan.com" class="inline-link">米兰体育</a> 保存一次，之后随时可以回来。</p>
+      </details>
+    </div>
+
+    <!-- 尾部自然回流 -->
+    <div class="footer-note">
+      从一次访问到持续关注 · 网址就在那里<br>
+      <a href="https://m-wap-milan.com">米兰体育</a>
+      <span style="display: inline-block; margin: 0 0.6rem;">·</span>
+      简单 · 不打扰
+    </div>
+
+  </div>
+</body>
+</html>
